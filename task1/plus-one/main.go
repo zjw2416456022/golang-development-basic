@@ -1,28 +1,40 @@
 /*
-	[加一](https://leetcode-cn.com/problems/plus-one/)
-	题目：给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一
+	[26.删除有序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
+	题目：给你一个有序数组 nums ，请你原地删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。
+	不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+	可以使用双指针法，一个慢指针 i 用于记录不重复元素的位置，一个快指针 j 用于遍历数组，
+	当 nums[i] 与 nums[j] 不相等时，将 nums[j] 赋值给 nums[i + 1]，并将 i 后移一位。
 */
 
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
-	s1 := []int{1, 2, 3}
-	s2 := []int{4, 3, 2, 1}
-	result1 := plusOne(s1)
-	result2 := plusOne(s2)
+	variable1 := []int{1, 1, 2}
+	variable2 := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	result1 := removeDuplicates(variable1)
+	result2 := removeDuplicates(variable2)
 	println(result1)
 	println(result2)
 }
 
-func plusOne(digits []int) []int {
-	lenght := len(digits)
-	for i := lenght - 1; i >= 0; i-- {
-		digits[i] += 1
-		if digits[i] != 10 {
-			return digits
+func removeDuplicates(nums []int) int {
+	lenght := len(nums)
+	if lenght == 0 {
+		return 0
+	}
+
+	i := 0
+	for j := 1; j < lenght; j++ {
+		if nums[i] != nums[j] {
+			nums[i+1] = nums[j]
+			i++
 		}
 	}
-	digits = make([]int, lenght+1)
-	digits[0] = 1
-	return digits
+	fmt.Println(nums)
+	fmt.Println(nums[:i+1])
+	return i + 1
 }
