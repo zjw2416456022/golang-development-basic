@@ -18,7 +18,7 @@ func main() {
 
 	slice := []int{1, 2, 3}
 	fmt.Println(slice)
-	multiplyTwo(&slice)
+	multiplyTwo(slice)
 	fmt.Println(slice)
 
 }
@@ -27,8 +27,8 @@ func addTen(p *int) {
 	*p += 10
 }
 
-func multiplyTwo(slice *[]int) {
-	for i := range *slice {
-		(*slice)[i] *= 2
+func multiplyTwo(slice []int) {
+	for i := range slice {
+		slice[i] *= 2
 	}
 }
