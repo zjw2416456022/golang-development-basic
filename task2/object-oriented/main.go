@@ -8,15 +8,58 @@
 
 package main
 
-import "fmt"
-
 func main() {
-	p := 1
-	fmt.Println(p)
+	rectangle := Rectangle{}
+	circle := Circle{}
+	rectangle.Area()
+	rectangle.Perimeter()
+	circle.Area()
+	circle.Perimeter()
+
+	emp := Employee{
+		Person: Person{
+			Name: "小明",
+			Age:  18,
+		},
+		EmployeeID: "11",
+	}
+	emp.printInfo()
+	// fmt.Println(p)
 }
 
-// type it
+type Shape interface {
+	Area()
+	Perimeter()
+}
+type Rectangle struct {
+}
 
-func Area() {
+func (r Rectangle) Area() {
 
+}
+func (r Rectangle) Perimeter() {
+
+}
+
+type Circle struct {
+}
+
+func (c Circle) Area() {
+
+}
+func (c Circle) Perimeter() {
+
+}
+
+type Person struct {
+	Name string
+	Age  int
+}
+type Employee struct {
+	Person
+	EmployeeID string
+}
+
+func (e Employee) printInfo() {
+	println(e.Name, e.Age, e.EmployeeID)
 }
